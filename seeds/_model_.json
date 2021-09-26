@@ -1,0 +1,74 @@
+{
+  "_model_:moquer": {
+    "type": "object",
+    "required": [
+      "priority", "response_status"
+    ],
+    "properties": {
+      "priority": {
+        "type": "number",
+        "nullable": false,
+        "example": "1"
+      },
+      "request_method_regex": {
+        "type": "string",
+        "nullable": true,
+        "example": "get"
+      },
+      "request_path_regex": {
+        "type": "string",
+        "nullable": true,
+        "example": "^\/users\/haci$"
+      },
+      "request_headers_regex": {
+        "type": "string",
+        "nullable": true
+      },
+      "request_body_regex": {
+        "type": "string",
+        "nullable": true
+      },
+      "request_query_regex": {
+        "type": "string",
+        "nullable": true
+      },
+      "response_status": {
+        "type": "number",
+        "nullable": false,
+        "example": "200"
+      },
+      "response_headers": {
+        "type": "string",
+        "nullable": true,
+        "description": "Templated JSON using Handlebars",
+        "example": "{ \"x-correlation\": \"{{request.headers['x-correlation']}}\" }"
+      },
+      "response_body": {
+        "type": "string",
+        "nullable": true,
+        "description": "Templated JSON using Handlebars",
+        "example": "{{db.user.haci}}"
+      }
+    }
+  },
+  "_model_:user": {
+    "type": "object",
+    "required": [
+      "username", "first_name", "last_name"
+    ],
+    "properties": {
+      "username": {
+        "type": "string",
+        "nullable": false
+      },
+      "first_name": {
+        "type": "string",
+        "nullable": false
+      },
+      "last_name": {
+        "type": "string",
+        "nullable": false
+      }
+    }
+  }
+}

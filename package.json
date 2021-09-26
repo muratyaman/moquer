@@ -1,0 +1,57 @@
+{
+  "name": "moquer",
+  "version": "1.0.0",
+  "description": "moquer is for mocking http services/apis, configure and manage fake templated responses by defining models as JSON schemas",
+  "main": "index.js",
+  "scripts": {
+    "build:ts": "tsc -b ./tsconfig.build.json",
+    "build": "npm run clean && npm run build:ts",
+    "clean": "rm -rf build",
+    "start": "node .",
+    "start:dev": "ts-node ./src/index.ts",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muratyaman/moquer.git"
+  },
+  "keywords": [
+    "mock",
+    "fake",
+    "api",
+    "service",
+    "http",
+    "mocking",
+    "server",
+    "json",
+    "response",
+    "configure",
+    "template"
+  ],
+  "author": "Haci Murat Yaman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muratyaman/moquer/issues"
+  },
+  "homepage": "https://github.com/muratyaman/moquer#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "glob": "^7.2.0",
+    "glob-promise": "^4.2.0",
+    "handlebars": "^4.7.7",
+    "helmet": "^4.6.0",
+    "jsonfile": "^6.1.0",
+    "jsonschema": "^1.4.0",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonfile": "^6.0.1",
+    "@types/node": "^16.10.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}

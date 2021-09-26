@@ -1,0 +1,24 @@
+{
+  "moquer:get_user_haci": {
+    "priority": "0",
+    "request_method_regex": "GET",
+    "request_path_regex": "^\/user\/haci$",
+    "request_headers_regex": "",
+    "request_body_regex": "",
+    "request_query_regex": "",
+    "response_status": 200,
+    "response_headers": "",
+    "response_body": "{{$data.user.haci}}"
+  },
+  "moquer:get_user_haci2": {
+    "priority": "1",
+    "request_method_regex": "GET",
+    "request_path_regex": "^\/user\/haci2$",
+    "request_headers_regex": "",
+    "request_body_regex": "",
+    "request_query_regex": "",
+    "response_status": 200,
+    "response_headers": "",
+    "response_body": "{{$data.user.haci}}"
+  }
+}

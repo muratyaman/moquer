@@ -1,0 +1,12 @@
+{
+  "user:haci": {
+    "username": "haci",
+    "first_name": "Haci",
+    "last_name": "Yaman"
+  },
+  "user:haci2": {
+    "username": "haci2",
+    "first_name": "Haci2",
+    "last_name": "Yaman2"
+  }
+}

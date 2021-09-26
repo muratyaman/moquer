@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "01385a4d-1f42-4f03-a73d-cf30b0d7c52d",
+		"name": "moquer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "models",
+					"item": [
+						{
+							"name": "GET /moquer/models",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/models",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET /moquer/models/moquer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/models/moquer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"moquer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PATCH /moquer/models/moquer",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"object\",\n    \"required\": [\n        \"priority\",\n        \"response_status\"\n    ],\n    \"properties\": {\n        \"priority\": {\n            \"type\": \"number\",\n            \"nullable\": false,\n            \"example\": \"2\"\n        },\n        \"request_method_regex\": {\n            \"type\": \"string\",\n            \"nullable\": true,\n            \"example\": \"get\"\n        },\n        \"request_path_regex\": {\n            \"type\": \"string\",\n            \"nullable\": true,\n            \"example\": \"^/users/haci$\"\n        },\n        \"request_headers_regex\": {\n            \"type\": \"string\",\n            \"nullable\": true\n        },\n        \"request_body_regex\": {\n            \"type\": \"string\",\n            \"nullable\": true\n        },\n        \"request_query_regex\": {\n            \"type\": \"string\",\n            \"nullable\": true\n        },\n        \"response_status\": {\n            \"type\": \"number\",\n            \"nullable\": false,\n            \"example\": \"200\"\n        },\n        \"response_headers\": {\n            \"type\": \"string\",\n            \"nullable\": true,\n            \"description\": \"Templated JSON using Handlebars\",\n            \"example\": \"{ \\\"x-correlation\\\": \\\"{{request.headers['x-correlation']}}\\\" }\"\n        },\n        \"response_body\": {\n            \"type\": \"string\",\n            \"nullable\": true,\n            \"description\": \"Templated JSON using Handlebars\",\n            \"example\": \"{{db.user.haci}}\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/models/moquer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"moquer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET /moquer/models/user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/models/user",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PATCH /moquer/models/user",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"object\",\n    \"required\": [\n        \"username\",\n        \"first_name\"\n    ],\n    \"properties\": {\n        \"username\": {\n            \"type\": \"string\",\n            \"nullable\": false\n        },\n        \"first_name\": {\n            \"type\": \"string\",\n            \"nullable\": false\n        },\n        \"last_name\": {\n            \"type\": \"string\",\n            \"nullable\": true\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/models/user",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET /moquer/models/customer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/models/customer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"customer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /moquer/models/customer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"object\",\n    \"required\": [\n        \"email\",\n        \"full_name\"\n    ],\n    \"properties\": {\n        \"email\": {\n            \"type\": \"string\",\n            \"nullable\": false\n        },\n        \"full_name\": {\n            \"type\": \"string\",\n            \"nullable\": false\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/models/customer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"customer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE /moquer/models/customer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/models/customer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"models",
+										"customer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "entities",
+					"item": [
+						{
+							"name": "GET /moquer/entities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/entities",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET /moquer/entities/user/haci",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/entities/user/haci",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"user",
+										"haci"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET /moquer/entities/user/haci2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/entities/user/haci2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"user",
+										"haci2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /moquer/entities/user/haci2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"haci2\",\n  \"first_name\": \"Haci2\",\n  \"last_name\": \"Yaman2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/entities/user/haci2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"user",
+										"haci2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PATCH /moquer/entities/user/haci",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"haci.yaman\",\n  \"first_name\": \"Haci\",\n  \"last_name\": \"Yaman\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/entities/user/haci",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"user",
+										"haci"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE /moquer/entities/user/haci2",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/entities/user/haci2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"user",
+										"haci2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET /moquer/entities/moquer/get_user_haci",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/entities/moquer/get_user_haci",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"moquer",
+										"get_user_haci"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PATCH /moquer/entities/moquer/get_user_haci",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"priority\": \"0\",\n    \"request_method_regex\": \"GET\",\n    \"request_path_regex\": \"^/user/haci$\",\n    \"request_headers_regex\": \"\",\n    \"request_body_regex\": \"\",\n    \"request_query_regex\": \"\",\n    \"response_status\": 200,\n    \"response_headers\": \"\",\n    \"response_body\": \"{{$db.user.haci}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/entities/moquer/get_user_haci",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"moquer",
+										"get_user_haci"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /moquer/entities/moquer/get_user_haci2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"priority\": \"0\",\n    \"request_method_regex\": \"get\",\n    \"request_path_regex\": \"^/user/haci2$\",\n    \"request_headers_regex\": \"\",\n    \"request_body_regex\": \"\",\n    \"request_query_regex\": \"\",\n    \"response_status\": 200,\n    \"response_headers\": \"{ \\\"x-correlation\\\": \\\"{{request.headers['x-correlation']}}\\\" }\",\n    \"response_body\": \"{{db.user.haci2}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/entities/moquer/get_user_haci2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"moquer",
+										"get_user_haci2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "GET /sample.json",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/sample.json",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"sample.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /user/haci",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/user/haci",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"haci"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
