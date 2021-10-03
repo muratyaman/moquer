@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { SafeString } from 'handlebars';
 import { Schema, ValidatorResult } from 'jsonschema';
 
 export interface IProcessEnv extends Record<string, string | undefined> {
@@ -74,8 +75,10 @@ export interface IMoquer {
   response_body: string; // e.g. "{{db.user.haci}}"
 }
 
+export type IMakeString = (obj: any) => string | SafeString;
+
 export interface IService {
-  loadAll(): Promise<IRecords>;
+  loadAll(asString: boolean, makeString: IMakeString): Promise<IRecords>;
   findModel(kind: string): Promise<IModel>;
   findEntity<T = any>(kind: string, id: string): Promise<T>;
   findEntities<T = any>(kind: string): Promise<T[]>;

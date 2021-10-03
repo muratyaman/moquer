@@ -5,7 +5,10 @@ import { dbKeySplit } from './utils';
 
 export function makeService(conf: IConfig, db: IDatabase, log = console): IService {
 
-  async function loadAll(asString = true): Promise<IRecords>{
+  async function loadAll(
+    asString = true,
+    makeString = obj => JSON.stringify(obj, null, '  '),
+  ): Promise<IRecords> {
     const rows: IRecords = {};
 
     const keys = await db.keys();
@@ -13,7 +16,7 @@ export function makeService(conf: IConfig, db: IDatabase, log = console): IServi
     for (let key of keyObjs) {
       const row = await db.retrieve(key.kind, key.id);
       if (!(key.kind in rows)) rows[key.kind] = {}; // init
-      rows[key.kind][key.id] = asString ? JSON.stringify(row, null, '  ') : row;
+      rows[key.kind][key.id] = asString ? makeString(row) : row;
     }
 
     return rows;

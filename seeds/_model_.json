@@ -41,13 +41,13 @@
         "type": "string",
         "nullable": true,
         "description": "Templated JSON using Handlebars",
-        "example": "{ \"x-correlation\": \"{{request.headers['x-correlation']}}\" }"
+        "example": "{ \"Content-Type\": \"application/json; charset=utf-8\", \"x-correlation\": \"{{{$request.headers['x-correlation']}}}\" }"
       },
       "response_body": {
         "type": "string",
         "nullable": true,
         "description": "Templated JSON using Handlebars",
-        "example": "{{db.user.haci}}"
+        "example": "{{{$data.user.haci}}}"
       }
     }
   },

@@ -1,6 +1,6 @@
 {
   "name": "moquer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "moquer is for mocking http services/apis, configure and manage fake templated responses by defining models as JSON schemas",
   "main": "index.js",
   "scripts": {
