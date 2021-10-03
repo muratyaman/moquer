@@ -1,20 +1,72 @@
 # moquer
 moquer is for mocking http services/apis, configure and manage fake templated responses by defining models as JSON schemas
 
+## requirements
+
+Latest LTS version of Node:
+
+https://nodejs.org/en/about/releases/
+
 ## install
 
 ```sh
 npm i
 ```
 
+Libraries used:
+
+* [cors](https://www.npmjs.com/package/cors)
+* [dotenv](https://www.npmjs.com/package/dotenv)
+* [express](https://www.npmjs.com/package/express)
+* [glob](https://www.npmjs.com/package/glob)
+* [glob-promise](https://www.npmjs.com/package/glob-promise)
+* [handlebars](https://www.npmjs.com/package/handlebars)
+* [helmet](https://www.npmjs.com/package/helmet)
+* [jsonfile](https://www.npmjs.com/package/jsonfile)
+* [jsonschema](https://www.npmjs.com/package/jsonschema)
+* [node-cache](https://www.npmjs.com/package/node-cache)
+* [ts-node](https://www.npmjs.com/package/ts-node)
+* [typescript](https://www.npmjs.com/package/typescript)
+
 ## configure
 
 Copy `env.sample` as `.env` as review settings
+
+```
+MOQUER_HTTP_PORT="9090"
+
+MOQUER_ADMIN_API_BASE_PATH="/moquer"
+MOQUER_MOCK_API_BASE_PATH="/"
+
+MOQUER_STATIC_BASE_PATH="/"
+MOQUER_STATIC_DIR="./static"
+
+MOQUER_DB_KIND="cache"
+
+# 0 or 1
+MOQUER_DB_SEED="1"
+MOQUER_DB_SEED_DIR="./seeds"
+```
 
 ## build
 
 ```sh
 npm run build
+```
+
+## test
+
+Libraries used:
+
+* [chai](https://www.npmjs.com/package/chai)
+* [mocha](https://www.npmjs.com/package/mocha)
+* [nyc](https://www.npmjs.com/package/nyc)
+* [sinon](https://www.npmjs.com/package/sinon)
+* [supertest](https://www.npmjs.com/package/supertest)
+
+```sh
+npm run test
+npm run test:coverage
 ```
 
 ## run 

@@ -25,10 +25,12 @@ export async function makeServer(
   }
 
   const mockRouter = express.Router();
-  makeMockRouters(conf, app, db, service, mockRouter);
+  makeMockRouters(conf, app, db, service, mockRouter, log);
 
-  const adminRouter = express.Router();
-  makeAdminRouters(conf, app, db, service, adminRouter);
+  const adminRouter  = express.Router();
+  const entityRouter = express.Router();
+  const modelRouter  = express.Router();
+  makeAdminRouters(conf, app, db, service, adminRouter, entityRouter, modelRouter, log);
 
   attachMiddlewareFirst(conf, app, log);
 

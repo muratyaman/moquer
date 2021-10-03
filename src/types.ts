@@ -81,3 +81,8 @@ export interface IService {
   findEntities<T = any>(kind: string): Promise<T[]>;
   validate(kind: string, value: any): Promise<ValidatorResult>;
 }
+
+export interface IKindWithId {
+  kind: string;
+  id: string;
+}
