@@ -10,9 +10,10 @@ export function makeConfig(penv: IProcessEnv = process.env): IConfig {
   if (penv.MOQUER_MOCK_STATIC_DIR) seedFilesDir = path.resolve(penv.MOQUER_MOCK_STATIC_DIR);
 
   return {
+    penv,
     app: {
       name: 'moquer',
-      version: '1.0.0', // TODO: keep same as version in package.json
+      version: penv.npm_package_version,
     },
     http: {
       port: Number.parseInt(penv.MOQUER_HTTP_PORT ?? '0'),

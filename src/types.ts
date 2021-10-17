@@ -10,6 +10,18 @@ export interface IProcessEnv extends Record<string, string | undefined> {
   MOQUER_STATIC_DIR?: string;
   MOQUER_DB_KIND?: string;
   MOQUER_DB_SEED?: string;
+
+  PGHOST?: string;
+  PGPORT?: string;
+  PGUSER?: string;
+  PGPASSWORD?: string;
+  PGDATABASE?: string;
+
+  REDIS_HOST?: string;
+  REDIS_PORT?: string;
+  REDIS_USER?: string;
+  REDIS_PASSWORD?: string;
+  REDIS_DATABASE?: string;
 }
 
 export interface IConfigHttp {
@@ -32,6 +44,7 @@ export interface IConfigDb {
 }
 
 export interface IConfig {
+  penv: IProcessEnv;
   app: IConfigApp;
   http: IConfigHttp;
   db: IConfigDb;
@@ -39,9 +52,9 @@ export interface IConfig {
 
 export interface IDatabase {
   keys(): Promise<string[]>;
-  create(kind: string, id: string, data: any): Promise<boolean>;
-  retrieve(kind: string, id: string): Promise<any>;
-  update(kind: string, id: string, newData: any): Promise<boolean>;
+  create(kind: string, id: string, data: IEntity): Promise<boolean>;
+  retrieve(kind: string, id: string): Promise<IEntity>;
+  update(kind: string, id: string, newData: IEntity): Promise<boolean>;
   delete_(kind: string, id: string): Promise<boolean>;
 }
 
@@ -59,26 +72,26 @@ export interface IControllerMoquer {
 
 export type IModel = Schema; // JSON schema
 
-export type IEntity = Record<string, any>;
+export type IEntity = Record<string, unknown>;
 
 export type IRecords = Record<string, IEntity>;
 
 export interface IMoquer {
   priority: number;
-  request_method_regex: string; // e.g. "get",
-  request_path_regex: string;   // e.g. "^\/users\/haci$",
+  request_method_regex: string;  // e.g. "get",
+  request_path_regex: string;    // e.g. "^\/users\/haci$",
   request_headers_regex: string;
   request_body_regex: string;
   request_query_regex: string;
-  response_status: number; // e.g. 200
-  response_headers: string; // e.g. "{ \"x-correlation\": \"{{request.headers['x-correlation']}}\" }",
-  response_body: string; // e.g. "{{db.user.haci}}"
+  response_status: number;       // e.g. 200
+  response_headers: string;      // e.g. "{ \"x-correlation\": \"{{{request.headers['x-correlation']}}}\" }",
+  response_body: string;         // e.g. "{{{json $data.user.haci}}}" or "{ \"id\": \""{{{$data.user.haci.id}}}"\""}"
 }
 
 export type IMakeString = (obj: any) => string | SafeString;
 
 export interface IService {
-  loadAll(asString: boolean, makeString: IMakeString): Promise<IRecords>;
+  loadAll(): Promise<IRecords>;
   findModel(kind: string): Promise<IModel>;
   findEntity<T = any>(kind: string, id: string): Promise<T>;
   findEntities<T = any>(kind: string): Promise<T[]>;

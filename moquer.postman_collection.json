@@ -351,6 +351,26 @@
 							"response": []
 						},
 						{
+							"name": "GET /moquer/entities/moquer/get_user_haci2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/moquer/entities/moquer/get_user_haci2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"moquer",
+										"get_user_haci2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "PATCH /moquer/entities/moquer/get_user_haci",
 							"request": {
 								"method": "PATCH",
@@ -380,13 +400,42 @@
 							"response": []
 						},
 						{
-							"name": "POST /moquer/entities/moquer/get_user_haci2",
+							"name": "POST /moquer/entities/moquer/get_user_haci",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"priority\": \"0\",\n    \"request_method_regex\": \"get\",\n    \"request_path_regex\": \"^/user/haci2$\",\n    \"request_headers_regex\": \"\",\n    \"request_body_regex\": \"\",\n    \"request_query_regex\": \"\",\n    \"response_status\": 200,\n    \"response_headers\": \"{ \\\"x-correlation\\\": \\\"{{request.headers['x-correlation']}}\\\" }\",\n    \"response_body\": \"{{db.user.haci2}}\"\n}",
+									"raw": "{\n    \"priority\": \"0\",\n    \"request_method_regex\": \"get\",\n    \"request_path_regex\": \"^/user/haci$\",\n    \"request_headers_regex\": \"\",\n    \"request_body_regex\": \"\",\n    \"request_query_regex\": \"\",\n    \"response_status\": 200,\n    \"response_headers\": \"\",\n    \"response_body\": \"{{{json $data.user.haci}}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/moquer/entities/moquer/get_user_haci",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"moquer",
+										"entities",
+										"moquer",
+										"get_user_haci"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /moquer/entities/moquer/get_user_haci2",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"priority\": \"0\",\n    \"request_method_regex\": \"get\",\n    \"request_path_regex\": \"^/user/haci2$\",\n    \"request_headers_regex\": \"\",\n    \"request_body_regex\": \"\",\n    \"request_query_regex\": \"\",\n    \"response_status\": 200,\n    \"response_headers\": \"{ \\\"x-correlation\\\": \\\"{{{$req.headers.xcorrelationid}}}\\\" }\",\n    \"response_body\": \"{ \\\"username\\\": \\\"{{{$data.user.haci2.username}}}\\\", \\\"first_name\\\": \\\"{{{lower $data.user.haci2.first_name}}}\\\", \\\"last_name\\\": \\\"{{{upper $data.user.haci2.last_name}}}\\\" }\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -433,7 +482,13 @@
 			"name": "GET /user/haci",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "x-correlation-id",
+						"value": "111",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{host}}/user/haci",
 					"host": [
@@ -442,6 +497,30 @@
 					"path": [
 						"user",
 						"haci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /user/haci2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-correlation-id",
+						"value": "222",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/user/haci2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"haci2"
 					]
 				}
 			},

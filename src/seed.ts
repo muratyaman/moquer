@@ -1,5 +1,5 @@
 
-import { IConfig, IDatabase } from './types';
+import { IConfig, IDatabase, IEntity } from './types';
 import { dbKeySplit, findFiles, readJsonFile } from './utils';
 
 export async function seed(conf: IConfig, db: IDatabase, log = console, finder = findFiles, reader = readJsonFile): Promise<boolean> {
@@ -9,8 +9,12 @@ export async function seed(conf: IConfig, db: IDatabase, log = console, finder =
   for (let file of files) {
     const data = await reader(file);
     log.info('- importing file', file, '...');
-    await importData(db, data, log);
-    log.info('- importing file', file, '... done!');
+    try {
+      await importData(db, data, log);
+      log.info('- importing file', file, '... done!');
+    } catch (err) {
+      log.info('- importing file', file, '... ERROR!', err.message);
+    }
   }
   log.info('seed finished!');
   return true;
@@ -21,8 +25,12 @@ export async function importData(db: IDatabase, data: any, log = console): Promi
   for (let [key, value] of kvList) {
     const { kind, id } = dbKeySplit(key);
     log.info('-- importing row', kind, id, '...');
-    const out = await db.create(kind, id, value);
-    log.info('-- importing row', kind, id, '... done!', out);
+    try {
+      const out = await db.create(kind, id, value as IEntity);
+      log.info('-- importing row', kind, id, '... done!', out);
+    } catch (err) {
+      log.info('-- importing row', kind, id, '... ERROR!', err.message);
+    }
   }
   return true;
 }

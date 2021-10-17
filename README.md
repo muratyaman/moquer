@@ -25,6 +25,8 @@ Libraries used:
 * [jsonfile](https://www.npmjs.com/package/jsonfile)
 * [jsonschema](https://www.npmjs.com/package/jsonschema)
 * [node-cache](https://www.npmjs.com/package/node-cache)
+* [pg](https://www.npmjs.com/package/pg)
+* [redis](https://www.npmjs.com/package/redis)
 * [ts-node](https://www.npmjs.com/package/ts-node)
 * [typescript](https://www.npmjs.com/package/typescript)
 
@@ -144,13 +146,13 @@ curl --location --request GET 'http://localhost:9090/moquer/models/moquer'
 #            "type": "string",
 #            "nullable": true,
 #            "description": "Templated JSON using Handlebars",
-#            "example": "{ \"x-correlation\": \"{{request.headers['x-correlation']}}\" }"
+#            "example": "{ \"x-correlation\": \"{{{$req.headers.xcorrelationid}}}\" }"
 #        },
 #        "response_body": {
 #            "type": "string",
 #            "nullable": true,
 #            "description": "Templated JSON using Handlebars",
-#            "example": "{{db.user.haci}}"
+#            "example": "{{{json $data.user.haci}}}"
 #        }
 #    }
 #}
@@ -230,7 +232,7 @@ curl --location --request GET 'http://localhost:9090/moquer/entities/moquer/get_
 #    "request_query_regex": "",
 #    "response_status": 200,
 #    "response_headers": "",
-#    "response_body": "{{$data.user.haci}}"
+#    "response_body": "{{{json $data.user.haci}}}"
 #}
 # HANDLEBARS is used for response body. $data lets you use all entities defined by you.
 
@@ -239,3 +241,28 @@ curl --location --request GET 'http://localhost:9090/moquer/entities/moquer/get_
 curl --location --request GET 'http://localhost:9090/sample.json'
 curl --location --request GET 'http://localhost:9090/user/haci'
 ```
+
+## Updates on 1.1.0
+
+Fixed a few issues, also added a few new features.
+
+Updated `seeds/` and Postman collection, please check for sample data and usage.
+
+### Added support for PostgreSQL as data storage. A table is required:
+
+Check `.env` file to configure and use a server.
+
+```
+moquer(id: varchar(255) PK, value: json)
+```
+
+### Added support for Redis as data storage.
+
+Check `.env` file to configure and use a server.
+
+### Added helper functions for Handlebars:
+
+* json: converts objects in template to JSON string
+* upper: converts text fields in template to lowercase
+* lower: converts text fields in template to uppercase
+* int: converts text fields in template to integer

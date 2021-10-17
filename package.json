@@ -1,6 +1,6 @@
 {
   "name": "moquer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "moquer is for mocking http services/apis, configure and manage fake templated responses by defining models as JSON schemas",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,10 @@
     "helmet": "^4.6.0",
     "jsonfile": "^6.1.0",
     "jsonschema": "^1.4.0",
-    "node-cache": "^5.1.2"
+    "md5": "^2.3.0",
+    "node-cache": "^5.1.2",
+    "pg": "^8.7.1",
+    "redis": "^3.1.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",

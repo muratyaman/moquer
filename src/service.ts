@@ -5,18 +5,16 @@ import { dbKeySplit } from './utils';
 
 export function makeService(conf: IConfig, db: IDatabase, log = console): IService {
 
-  async function loadAll(
-    asString = true,
-    makeString = obj => JSON.stringify(obj, null, '  '),
-  ): Promise<IRecords> {
+  async function loadAll(): Promise<IRecords> {
     const rows: IRecords = {};
 
     const keys = await db.keys();
     const keyObjs = keys.map(dbKeySplit);
+
     for (let key of keyObjs) {
       const row = await db.retrieve(key.kind, key.id);
       if (!(key.kind in rows)) rows[key.kind] = {}; // init
-      rows[key.kind][key.id] = asString ? makeString(row) : row;
+      rows[key.kind][key.id] = row;
     }
 
     return rows;
@@ -27,7 +25,8 @@ export function makeService(conf: IConfig, db: IDatabase, log = console): IServi
   }
 
   async function findEntity<T = IEntity>(kind: string, id: string): Promise<T> {
-    return db.retrieve(kind, id);
+    const row = await db.retrieve(kind, id)
+    return row as T;
   }
 
   async function findEntities<T = any>(kind: string): Promise<T[]> {

@@ -8,7 +8,7 @@
     "request_query_regex": "",
     "response_status": 200,
     "response_headers": "{ \"Content-Type\": \"application/json; charset=utf-8\" }",
-    "response_body": "{{{$data.user.haci}}}"
+    "response_body": "{{{json $data.user.haci}}}"
   },
   "moquer:get_user_haci2": {
     "priority": "1",
@@ -18,7 +18,7 @@
     "request_body_regex": "",
     "request_query_regex": "",
     "response_status": 200,
-    "response_headers": "{ \"Content-Type\": \"application/json; charset=utf-8\" }",
-    "response_body": "{{{$data.user.haci}}}"
+    "response_headers": "{ \"Content-Type\": \"application/json; charset=utf-8\", \"x-correlation-id\": \"{{{$req.headers.xcorrelationid}}}\" }",
+    "response_body": "{ \"username\": \"{{{$data.user.haci2.username}}}\", \"first_name\": \"{{{lower $data.user.haci2.first_name}}}\", \"last_name\": \"{{{upper $data.user.haci2.last_name}}}\" }"
   }
 }

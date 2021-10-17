@@ -47,7 +47,7 @@
         "type": "string",
         "nullable": true,
         "description": "Templated JSON using Handlebars",
-        "example": "{{{$data.user.haci}}}"
+        "example": "{{{json $data.user.haci}}}"
       }
     }
   },

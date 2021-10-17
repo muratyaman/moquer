@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import glob from 'glob-promise';
 import jsonfile from 'jsonfile';
 import { IKindWithId } from './types';
@@ -29,4 +30,24 @@ export async function readJsonFile(file: string, log = console): Promise<unknown
     log.error(err);
     return null;
   }
+}
+
+export function prettyJson(val: any) {
+  return JSON.stringify(val, null, '  ');
+}
+
+export function adaptRequestForTemplate(req: Request) {
+  const reqHeaders = {};
+  Object.entries(req.headers).forEach(([k, v]) => {
+    const k2 = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+    reqHeaders[k2] = req.header(k);
+  });
+  console.log('request headers', reqHeaders);
+  return {
+    method: req.method,
+    path: req.path,
+    query: req.query,
+    headers: reqHeaders,
+    body: req.body,
+  };
 }
